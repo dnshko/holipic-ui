@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ThemeOne from "./themes/theme-one";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Header from "./components/HeaderSection/Header";
+import FooterSection from "./components/FooterSection/Footer";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/*====== Scroll To Top Area Start ======*/}
+      <div id="scrollUp" title="Scroll To Top">
+        <i className="fas fa-arrow-up" />
+      </div>
+      {/*====== Scroll To Top Area End ======*/}
+      <Header />
+      <Routes>
+        <Route path="/" element={<ThemeOne />} />
+        <Route path="/shop" element={<Shop />} />
+      </Routes>
+      <FooterSection />
+    </BrowserRouter>
   );
 }
 
