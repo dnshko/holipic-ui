@@ -1,17 +1,18 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Link from "@material-ui/core/Link"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Link from "@material-ui/core/Link";
 
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { useParams, useNavigate } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(2),
@@ -22,20 +23,21 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    fontSize:12
+    fontSize: 12,
   },
 }));
 
 export default function ButtonAppBar(props) {
+  let navigate = useNavigate();
   const classes = useStyles();
-  const back = ()=>{
-    props.history.push('/')
+  const back = () => {
+    navigate("/");
     // alert(window.location.hostname)
     // if(window.location.hostname==="localhost")
-      // window.location.href = "https://holipic.herokuapp.com/" 
+    // window.location.href = "https://holipic.herokuapp.com/"
     // else
-      // window.location.href = "https://"+window.location.hostname+"/"
-  }
+    // window.location.href = "https://"+window.location.hostname+"/"
+  };
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -47,20 +49,26 @@ export default function ButtonAppBar(props) {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="transparent" style={{boxShadow:"none"}}>
+      <AppBar
+        position="static"
+        color="transparent"
+        style={{ boxShadow: "none" }}
+      >
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="menu" size="small" onClick={()=>back()}>
-            <KeyboardBackspaceIcon /> 
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            size="small"
+            onClick={() => back()}
+          >
+            <KeyboardBackspaceIcon />
           </IconButton>
-          <h5 className={classes.title}>
-            Back to Home
-          </h5>
-        
-          <h5 style={{fontSize: 12}}>
-            Filter
-          </h5>
+          <h5 className={classes.title}>Back to Home</h5>
+
+          <h5 style={{ fontSize: 12 }}>Filter</h5>
           <IconButton color="inherit" size="small" onClick={handleClick}>
-            <ExpandMoreIcon fontSize="small" /> 
+            <ExpandMoreIcon fontSize="small" />
           </IconButton>
           <Menu
             id="simple-menu"

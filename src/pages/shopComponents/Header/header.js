@@ -23,14 +23,14 @@ function Header(props) {
           <a className="navbar-brand" href="/">
             <img
               className="navbar-brand-regular"
-              style={{ width: 50, height: 50 }}
-              src={props.logo}
+              style={{ width: 40, height: 40 }}
+              src="/img/logo.png"
               alt="brand-logo"
             />
             <img
               className="navbar-brand-sticky"
-              style={{ width: 50, height: 50 }}
-              src={props.logo}
+              style={{ width: 40, height: 40 }}
+              src="/img/logo.png"
               alt="sticky brand-logo"
             />
           </a>

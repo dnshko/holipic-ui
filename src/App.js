@@ -2,7 +2,7 @@ import React from "react";
 import ThemeOne from "./themes/theme-one";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Header from "./components/HeaderSection/Header";
+// import Header from "./components/HeaderSection/Header";
 import FooterSection from "./components/FooterSection/Footer";
 import Shop from "./pages/Shop";
 
@@ -14,7 +14,7 @@ function App() {
         <i className="fas fa-arrow-up" />
       </div>
       {/*====== Scroll To Top Area End ======*/}
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<ThemeOne />} />
         <Route path="/shop" element={<Shop />} />

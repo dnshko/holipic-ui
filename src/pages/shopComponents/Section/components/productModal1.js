@@ -198,13 +198,13 @@ export default function CustomizedDialogs(props) {
 
                 <form>
                   <div className="row">
-                    {inputs.map((input, index) => {
+                    {/* {inputs.map((input, index) => {
                       return (
                         <div className="col-12 mt-3">
                           <CustomSelect input={input} />
                         </div>
                       );
-                    })}
+                    })} */}
                     <div className="col-12 mt-3">
                       <Button
                         variant="outlined"

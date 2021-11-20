@@ -61,7 +61,7 @@ export default function Shop({ ...rest }) {
       </div>
       {/*====== Scroll To Top Area End ======*/}
       <div className="main" style={{ overflowX: "hidden" }}>
-        {/* <Header logo={logo} {...rest} /> */}
+        <Header />
 
         {/* <PaymentSuccess open={open} onClick={setOpen} invoice={invoice} /> */}
         <ShopSection {...rest} />

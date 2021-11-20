@@ -15,6 +15,7 @@ class ThemeOne extends Component {
     return (
       <React.StrictMode>
         <div className="main" style={{ overflowX: "hidden" }}>
+          <Header />
           <HeroSection />
           <FeatureSection />
           <Work />
