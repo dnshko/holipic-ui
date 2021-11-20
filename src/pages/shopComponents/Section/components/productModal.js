@@ -102,6 +102,8 @@ const useStyles = makeStyles({
 });
 
 export default function CustomizedDialogs(props) {
+  const [fullWidth, setFullWidth] = React.useState(true);
+  const [maxWidth, setMaxWidth] = React.useState("sm");
   const classes = useStyles();
   const { open, onClick } = props;
   const handleClose = () => {
@@ -118,7 +120,7 @@ export default function CustomizedDialogs(props) {
 
   const addItem = () => {
     var shoppingCart = JSON.parse(localStorage.getItem("shopping_cart")) || [];
-    var item = shoppingCart.find((x) => x.id == item.id);
+    // var item = shoppingCart.find((x) => x.id == item.id);
     if (item) {
       item.quantity += quantity;
     } else {
@@ -142,10 +144,12 @@ export default function CustomizedDialogs(props) {
   return (
     <div>
       <Dialog
-        maxWidth={false}
+        fullWidth={fullWidth}
+        maxWidth={maxWidth}
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        className="ProductPopUp"
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           Product Details
@@ -216,13 +220,13 @@ export default function CustomizedDialogs(props) {
 
                 <form>
                   <div className="row">
-                    {inputs.map((input, index) => {
+                    {/* {inputs.map((input, index) => {
                       return (
                         <div className="col-12 col-sm-6 col-md-6 col-lg-6 mt-3">
                           <CustomSelect input={input} />
                         </div>
                       );
-                    })}
+                    })} */}
                     <div className="col-12 mt-3">
                       <Button
                         variant="outlined"

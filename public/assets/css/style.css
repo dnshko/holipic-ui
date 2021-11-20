@@ -2414,3 +2414,7 @@ img {
   position: relative;
   z-index: 1;
 }
+
+.MuiDialog-paper {
+  border-radius: 15px !important;
+}
