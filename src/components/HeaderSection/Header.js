@@ -1,4 +1,3 @@
-import { turn } from "cli-table";
 import React, { useState } from "react";
 import Register from "../../components/Modal/Register";
 import Register1 from "../Modal/Register1.jsx";
@@ -6,6 +5,7 @@ import SuccessModal from "../Modal/Success.jsx";
 import SuccessModal1 from "../Modal/Success1.jsx";
 import { Link } from "react-router-dom";
 import { Hidden } from "@material-ui/core";
+import { HashLink, NavHashLink } from "react-router-hash-link";
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -83,29 +83,29 @@ const Header = (props) => {
             <nav>
               <ul className="navbar-nav" id="navbar-nav">
                 <li className="nav-item" onClick={toggle}>
-                  <a className="nav-link scroll" href="#home">
+                  <HashLink smooth className="nav-link" to="/#home">
                     Home
-                  </a>
+                  </HashLink>
                 </li>
                 <li className="nav-item" onClick={toggle}>
-                  <a className="nav-link scroll" href="#features">
+                  <HashLink smooth className="nav-link" to="/#features">
                     Benefits
-                  </a>
+                  </HashLink>
                 </li>
                 <li className="nav-item" onClick={toggle}>
-                  <a className="nav-link scroll" href="#work">
+                  <HashLink smooth className="nav-link " to="/#work">
                     How it work
-                  </a>
+                  </HashLink>
                 </li>
                 <li className="nav-item" onClick={toggle}>
-                  <a className="nav-link scroll" href="#apps">
+                  <HashLink smooth className="nav-link " to="/#apps">
                     APPS
-                  </a>
+                  </HashLink>
                 </li>
                 <li className="nav-item" onClick={toggle}>
-                  <a className="nav-link scroll" href="#pricing">
+                  <HashLink smooth className="nav-link " to="/#pricing">
                     Pricing
-                  </a>
+                  </HashLink>
                 </li>
                 <li
                   className="nav-item"
@@ -145,8 +145,8 @@ const Header = (props) => {
                     </li>
                   </ul>
                 </li>
-                {/* <li className="nav-item" onClick={toggle}> */}
-                <li className="nav-item">
+                <li className="nav-item" onClick={toggle}>
+                  {/* <li className="nav-item"> */}
                   <Link className="nav-link" to="/shop">
                     Shop
                   </Link>
