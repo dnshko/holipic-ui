@@ -99,11 +99,10 @@ function Form(props) {
         { name: "Monthly", value: 0 },
         { name: "Yearly", value: 1 },
       ],
-    }
+    },
   ];
   const onSubmit = () => {
-
-    var a = window['$']("#submitForm input")
+    var a = window["$"]("#submitForm input");
     var full_name = a[0].value;
     var company_name = a[1].value;
     var company_address = a[2].value;
@@ -114,23 +113,28 @@ function Form(props) {
     var email = a[6].value;
     var password = a[7].value;
     var package_id = a[8].value;
-    
+
     console.log(full_name, company_name, company_address, country_id, city_id);
     console.log(phone, email, password, package_id);
 
     axios
       .post(config.hostUrl + "/api/auth/register", {
-        full_name, company_name, company_address, country_id, city_id,
-        phone, email, password, package_id,
-        referId
+        full_name,
+        company_name,
+        company_address,
+        country_id,
+        city_id,
+        phone,
+        email,
+        password,
+        package_id,
+        referId,
       })
       .then((d) => {
-       
         console.log(d.data);
-        
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
 
     handleClose();
@@ -144,7 +148,6 @@ function Form(props) {
         inputs.find((i) => i.id == "country").options = d.data;
         setCountries(d.data);
         console.log(d.data);
-        
       })
       .catch((err) => err);
 
@@ -152,42 +155,56 @@ function Form(props) {
   }, []);
 
   const onChangeCountry = (id) => {
-    
     axios
-      .get(config.hostUrl + "/api/countries/cities-of-country/"+id)
+      .get(config.hostUrl + "/api/countries/cities-of-country/" + id)
       .then((d) => {
         inputs.find((i) => i.id == "city").options = d.data;
         setCities(d.data);
         console.log(d.data);
-        
       })
       .catch((err) => err);
-
-  }
+  };
 
   return (
     <div>
       <form id="submitForm">
         {inputs.map((input, index) => {
           if (input.type === "select") {
-
-            if(input.id === "country") {
+            if (input.id === "country") {
               return (
-                <div className="mt-3" key={index} style={{display: 'inline-block', width: '45%'}}>
-                  <CustomSelect input={input} stype={type} onChange={onChangeCountry}/>
+                <div
+                  className="mt-3"
+                  key={index}
+                  style={{ display: "inline-block", width: "45%" }}
+                >
+                  <CustomSelect
+                    input={input}
+                    stype={type}
+                    onChange={onChangeCountry}
+                  />
                 </div>
               );
-            }else if(input.id === "city") {
+            } else if (input.id === "city") {
               return (
-                <div className="mt-3 ml-4" key={index} style={{display: 'inline-block', width: '45%'}}>
-                  <CustomSelect input={input} stype={type} style={{float: 'right'}}/>
+                <div
+                  className="mt-3 ml-4"
+                  key={index}
+                  style={{ display: "inline-block", width: "45%" }}
+                >
+                  <CustomSelect
+                    input={input}
+                    stype={type}
+                    style={{ float: "right" }}
+                  />
                 </div>
               );
-
             }
             return (
               <div className="mt-3" key={index}>
-                <CustomSelect input={input} selected={type == '1'? '1': '2'}/>
+                <CustomSelect
+                  input={input}
+                  selected={type == "1" ? "1" : "2"}
+                />
               </div>
             );
           } else {
@@ -210,11 +227,7 @@ function Form(props) {
         </div>
         <Hidden xsDown>
           <div className="form-group">
-            <button
-              class="btn-register blue"
-              type="button"
-              onClick={() => onSubmit()}
-            >
+            <button class="btn" type="button" onClick={() => onSubmit()}>
               Sign Up
             </button>{" "}
             have an account?
@@ -228,11 +241,7 @@ function Form(props) {
         </Hidden>
         <Hidden smUp>
           <div className="form-group">
-            <button
-              class="btn-register blue"
-              type="button"
-              onClick={() => onSubmit()}
-            >
+            <button class="btn" type="button" onClick={() => onSubmit()}>
               Sign Up
             </button>
             <br></br>

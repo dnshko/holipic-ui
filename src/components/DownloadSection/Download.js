@@ -6,8 +6,7 @@ const initData = {
     "Holipic Apps support 100% to almost all of opertaing systems for your convenience, without requiring to any company to use a specific device or platgorm.",
   headingTexttwo:
     "Holipic Apps support 100% to almost all of opertaing systems for your convenience, without requiring to any company to use a specific device or platgorm.",
-  headingSlug:
-    "* Available on iPhone, iPad, MacOS, Windows and all Android devices",
+  headingSlug: "* Available on iPhone, iPad and all Android devices",
   playImg: "/img/google-play.png",
   appleImg: "/img/app-store.png",
   macImg: "/img/mac.png",
@@ -54,7 +53,7 @@ class Download extends Component {
                       style={{ margin: "10px" }}
                     />
                   </a>
-                  <a href="/#">
+                  {/* <a href="/#">
                     <img
                       src={this.state.initData.macImg}
                       alt=""
@@ -67,7 +66,7 @@ class Download extends Component {
                       alt=""
                       style={{ margin: "10px" }}
                     />
-                  </a>
+                  </a> */}
                 </div>
                 <span className="d-inline-block text-white fw-3 font-italic mt-3">
                   {this.state.initData.headingSlug}

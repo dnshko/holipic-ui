@@ -20,7 +20,7 @@ function Header(props) {
       </Hidden>
       <header className="navbar navbar-sticky navbar-expand-lg ">
         <div className="container position-relative">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img
               className="navbar-brand-regular"
               style={{ width: 40, height: 40 }}
@@ -33,7 +33,7 @@ function Header(props) {
               src="/img/logo.png"
               alt="sticky brand-logo"
             />
-          </a>
+          </Link>
           <div className="navbar-toggler d-lg-none">
             <Badge onClick={setOpen} />
           </div>

@@ -72,8 +72,8 @@ const useStyles = makeStyles({
     maxWidth: 360,
   },
   dialog: {
-    borderTopLeftRadius: 50,
-    borderTopRightRadius: 50,
+    borderTopLeftRadius: "15px !important",
+    borderTopRightRadius: "15px !important",
   },
 });
 
