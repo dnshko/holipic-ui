@@ -90,78 +90,85 @@ const rows = [
 function BasicTable() {
   const classes = useStyles1();
 
-  const [data, setData] = useState([]);
-  const [data_, setData_] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: "test",
+      price: 10,
+      quantity: 1,
+    },
+  ]);
+  const [data_, setData_] = useState([{}]);
   const [subTotal, setSubTotal] = useState(0);
 
-  useEffect(() => {
-    axios
-      .get("/api/products/list")
-      .then((res) => {
-        console.log(res.data);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/products/list")
+  //     .then((res) => {
+  //       console.log(res.data);
 
-        var shoppingCart =
-          JSON.parse(localStorage.getItem("shopping_cart")) || [];
-        var tempArray = [];
+  //       var shoppingCart =
+  //         JSON.parse(localStorage.getItem("shopping_cart")) || [];
+  //       var tempArray = [];
 
-        var sub_total = 0;
+  //       var sub_total = 0;
 
-        for (let i = 0; i < res.data.length; i++) {
-          var element = res.data[i];
+  //       for (let i = 0; i < res.data.length; i++) {
+  //         var element = res.data[i];
 
-          var order = shoppingCart.find((x) => x.id == element.id);
-          if (order) {
-            tempArray.push({ ...element, ...order });
-            sub_total += element.price * order.quantity;
-          }
-        }
+  //         var order = shoppingCart.find((x) => x.id == element.id);
+  //         if (order) {
+  //           tempArray.push({ ...element, ...order });
+  //           sub_total += element.price * order.quantity;
+  //         }
+  //       }
 
-        setData(tempArray);
-        setData_(res.data);
-        setSubTotal(sub_total);
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-      });
-  }, []);
+  //       setData(tempArray);
+  //       setData_(res.data);
+  //       setSubTotal(sub_total);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.response.data);
+  //     });
+  // }, []);
 
-  const calculateSubTotal = (newArray) => {
-    var sub_total = 0;
-    for (let i = 0; i < newArray.length; i++) {
-      var element = newArray[i];
-      sub_total += element.price + element.quantity;
-    }
-    setSubTotal(sub_total);
-  };
-  const increaseItem = (id) => {
-    var newArray = [];
-    var remainArr = data.filter((d) => d.id != id);
-    var item = data.find((d) => d.id == id);
-    item.quantity += 1;
-    newArray = [...remainArr, item];
+  // const calculateSubTotal = (newArray) => {
+  //   var sub_total = 0;
+  //   for (let i = 0; i < newArray.length; i++) {
+  //     var element = newArray[i];
+  //     sub_total += element.price + element.quantity;
+  //   }
+  //   setSubTotal(sub_total);
+  // };
+  // const increaseItem = (id) => {
+  //   var newArray = [];
+  //   var remainArr = data.filter((d) => d.id != id);
+  //   var item = data.find((d) => d.id == id);
+  //   item.quantity += 1;
+  //   newArray = [...remainArr, item];
 
-    calculateSubTotal(newArray);
-    setData(newArray);
-    localStorage.setItem("shopping_cart", JSON.stringify(newArray));
-  };
+  //   calculateSubTotal(newArray);
+  //   setData(newArray);
+  //   localStorage.setItem("shopping_cart", JSON.stringify(newArray));
+  // };
 
-  const decreaseItem = (id, quantity) => {
-    var newArray = [];
-    var remainArr = data.filter((d) => d.id != id);
+  // const decreaseItem = (id, quantity) => {
+  //   var newArray = [];
+  //   var remainArr = data.filter((d) => d.id != id);
 
-    if (quantity == 1) {
-      newArray = [...remainArr];
-    } else {
-      var item = data.find((d) => d.id == id);
-      item.quantity -= 1;
+  //   if (quantity == 1) {
+  //     newArray = [...remainArr];
+  //   } else {
+  //     var item = data.find((d) => d.id == id);
+  //     item.quantity -= 1;
 
-      newArray = [...remainArr, item];
-    }
+  //     newArray = [...remainArr, item];
+  //   }
 
-    calculateSubTotal(newArray);
-    setData(newArray);
-    localStorage.setItem("shopping_cart", JSON.stringify(newArray));
-  };
+  //   calculateSubTotal(newArray);
+  //   setData(newArray);
+  //   localStorage.setItem("shopping_cart", JSON.stringify(newArray));
+  // };
 
   return (
     <div>
@@ -190,10 +197,7 @@ function BasicTable() {
                 <div className="card" style={{ borderColor: "transparent" }}>
                   <div className={classes.horizontal}>
                     <div className={classes.image}>
-                      <img
-                        src="./assets/img/download.jpg"
-                        className={classes.cover}
-                      />
+                      <img src="./img/download.jpg" className={classes.cover} />
                     </div>
                     <div className="card-body">
                       <h6>{row.name}</h6>
@@ -210,7 +214,7 @@ function BasicTable() {
                   size="small"
                 >
                   <Button
-                    onClick={(e) => decreaseItem(row.id, row.quantity)}
+                    // onClick={(e) => decreaseItem(row.id, row.quantity)}
                     style={{
                       width: 5,
                       height: 18,
@@ -232,7 +236,7 @@ function BasicTable() {
                     {row.quantity}
                   </Button>
                   <Button
-                    onClick={(e) => increaseItem(row.id)}
+                    // onClick={(e) => increaseItem(row.id)}
                     style={{
                       width: 5,
                       height: 18,
@@ -774,13 +778,14 @@ export default function CustomizedDialogs(props) {
   const steps = getSteps();
 
   const handleNext = () => {
-    setActiveStep((preActiveStep) => preActiveStep + 1);
-    if (activeStep === 2) {
-      // alert()
-      // setTimeout(()=>{
-      //   handleReset()
-      // },3000)
-    }
+    // setActiveStep((preActiveStep) => preActiveStep + 1);
+    setActiveStep(activeStep + 1);
+    // if (activeStep === 2) {
+    //   alert();
+    //   setTimeout(() => {
+    //     handleReset();
+    //   }, 3000);
+    // }
   };
 
   const handleBack = () => {

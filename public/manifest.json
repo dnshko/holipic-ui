@@ -1,6 +1,6 @@
 {
   "short_name": "Holipic",
-  "name": "Holipic Holiday Imaging",
+  "name": "Holipic",
   "icons": [
     {
       "src": "windows11/SmallTile.scale-100.png",
@@ -452,7 +452,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#1da5e8",
-  "background_color": "#ffffff"
+  "background_color": "linear-gradient(25deg, #00a2ea, #85d0f4)"
 }
